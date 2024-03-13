@@ -17,6 +17,11 @@ app.get('/encode/:message', (request, response) => {
    response.send(encodedMessage);
 });
 
+app.get('/decode/:message', (request, response) => {
+    const message = request.params.message;
+    const decodedMessage = Vigenere.Decipher(password).crypt(message);
+    response.send(decodedMessage);
+});
 
 app.listen(port, () => {
    console.log('We are live on ' + port);
